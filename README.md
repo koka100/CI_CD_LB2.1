@@ -34,6 +34,48 @@ COPY app/ .
 CMD ["python", "main.py"]
 
 
+## Генерация данных
+def generate_ecommerce_data(n_orders: int = 100) -> pd.DataFrame:
+    now = datetime.now()
+    categories = ["Electronics", "Clothes", "Books", "Home", "Toys"]
+
+    rows = []
+    for i in range(1, n_orders + 1):
+        order_date = now - timedelta(days=random.randint(0, 30))
+        amount = round(random.uniform(10, 500), 2)
+        category = random.choice(categories)
+        is_returned = random.choice()[11]
+
+        rows.append(
+            {
+                "order_id": i,
+                "order_date": order_date,
+                "amount": amount,
+                "category": category,
+                "is_returned": is_returned,
+            }
+        )
+
+    df = pd.DataFrame(rows)
+    return df
+
+
+## Расчет метрик
+
+def calc_metrics(df: pd.DataFrame) -> dict:
+    total_revenue = df["amount"].sum()
+    orders_count = len(df)
+    returns_share = df["is_returned"].mean() * 100
+
+    metrics = {
+        "total_revenue": round(total_revenue, 2),
+        "orders_count": int(orders_count),
+        "returns_share_percent": round(returns_share, 2),
+    }
+    return metrics
+
+
+
 
 
 ## Настройка директорий проекта
