@@ -25,4 +25,5 @@
 <img width="732" height="541" alt="image" src="https://github.com/user-attachments/assets/1cc58a14-7598-4fcf-bbf8-967a8ef8b833" />
 
 ## Попытка подключения к PostgreSQL и обработка ошибки
-<img width="725" height="566" alt="image" src="https://github.com/user-attachments/assets/00a4ab0b-1b6a-4424-84df-49326a4864dd" />
+<img width="731" height="242" alt="image" src="https://github.com/user-attachments/assets/3dd353f1-6f49-4633-b63b-6a9dd278f8f3" />
+
