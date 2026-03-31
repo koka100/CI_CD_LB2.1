@@ -7,4 +7,23 @@ services:
       dockerfile: Dockerfile
     image: lab02_variant20
     container_name: lab02_v20
-  
+    depends_on:
+      db:
+        condition: service_started
+    # Сеть общая, поэтому host="db" будет разрешаться к сервису db
+
+  db:
+    image: postgres:16
+    container_name: lab02_db
+    environment:
+      POSTGRES_DB: shop
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: real_secret
+    ports:
+      - "5432:5432"
+    #Healthcheck опционален, можно добавить для надёжности:
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d shop"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
