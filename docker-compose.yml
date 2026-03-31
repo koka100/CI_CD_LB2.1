@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  lab02_variant20:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lab02_variant20
+    container_name: lab02_v20
+  
